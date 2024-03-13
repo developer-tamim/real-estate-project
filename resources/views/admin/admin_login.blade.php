@@ -12,6 +12,13 @@
 
     <title>Admin Login Page</title>
 
+    <style>
+        .authlogin-side-wrapper{
+            width: 100%;
+            height: 100%;
+            background-image: url({{ asset('upload/login.png') }});
+        }
+    </style>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +54,7 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-md-4 pe-md-0">
-                                    <div class="auth-side-wrapper">
+                                    <div class="authlogin-side-wrapper">
 
                                     </div>
                                 </div>
@@ -57,16 +64,17 @@
                                             class="noble-ui-logo logo-light d-block mb-2">Easy<span>Learning</span></a>
                                         <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
 
-                                        <form class="forms-sample">
+                                        <form class="forms-sample" method="POST" action="{{ route('login') }}">
+                                            @csrf
                                             <div class="mb-3">
-                                                <label for="userEmail" class="form-label">Email/Name/Phone</label>
-                                                <input type="email" class="form-control" id="userEmail"
-                                                    placeholder="Email">
+                                                <label for="login" class="form-label">Email/Name/Phone</label>
+                                                <input type="text" class="form-control" id="login" name="login"
+                                                    placeholder="Email/Name/Phone">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="userPassword" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="userPassword"
-                                                    autocomplete="current-password" placeholder="Password">
+                                                <label for="password" class="form-label">Password</label>
+                                                <input type="password" class="form-control" id="password" name="password"
+                                                    autocomplete="password" placeholder="Password">
                                             </div>
                                             <div class="form-check mb-3">
                                                 <input type="checkbox" class="form-check-input" id="authCheck">
