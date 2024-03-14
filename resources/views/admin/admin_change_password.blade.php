@@ -64,7 +64,7 @@
                                     <label for="name" class="form-label">Old Password</label>
                                     <input type="password" name="old_password" class="form-control @error('old_password') is-invalid @enderror" id="old_password" autocomplete="off">
                                     @error('old_password')
-                                        <span class="text-danger">{{ message }}</span>
+                                        <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
 
