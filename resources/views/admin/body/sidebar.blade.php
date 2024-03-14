@@ -1,6 +1,6 @@
 <nav class="sidebar">
     <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
+        <a href="{{ route('admin.dashboard') }}" class="sidebar-brand">
             Easy<span>Learning</span>
         </a>
         <div class="sidebar-toggler not-active">
@@ -91,7 +91,7 @@
                     </ul>
                 </div>
             </li>
-            
+
             <li class="nav-item nav-category">Docs</li>
             <li class="nav-item">
                 <a href="https://www.nobleui.com/html/documentation/docs.html" target="_blank" class="nav-link">
