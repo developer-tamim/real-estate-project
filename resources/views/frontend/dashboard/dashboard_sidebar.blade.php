@@ -11,10 +11,10 @@
             </div>
             <div class="post-inner">
                 <div class="post">
-                    <figure class="post-thumb"><a href="blog-details.html">
+                    <figure class="post-thumb"><a href="{{ route('user.dashboard') }}">
                             <img src="{{ !empty($userData->photo) ? url('upload/user_images/' . $userData->photo) : url('upload/no_image.jpg') }}"
                                 alt=""></a></figure>
-                    <h5><a href="blog-details.html">{{ $userData->name }}</a></h5>
+                    <h5><a href="{{ route('user.dashboard') }}">{{ $userData->name }}</a></h5>
                     <p>{{ $userData->email }}</p>
                 </div>
             </div>
@@ -36,9 +36,9 @@
                             Properties </a></li>
                     <li><a href="blog-details.html"><i class="fa fa-indent" aria-hidden="true"></i> Add a
                             Property </a></li>
-                    <li><a href="blog-details.html"><i class="fa fa-key" aria-hidden="true"></i> Security
+                    <li><a href="{{ route('user.change.password') }}"><i class="fa fa-key" aria-hidden="true"></i> Security
                         </a></li>
-                    <li><a href="blog-details.html"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Logout
+                    <li><a href="{{ route('user.logout') }}"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i> Logout
                         </a></li>
                 </ul>
             </div>

@@ -8,10 +8,10 @@
         style="background-image: url({{ asset('frontend/assets/images/background/page-title-5.jpg') }});">
         <div class="auto-container">
             <div class="content-box clearfix">
-                <h1>User Profile </h1>
+                <h1>Change Password </h1>
                 <ul class="bread-crumb clearfix">
                     <li><a href="index.html">Home</a></li>
-                    <li>User Profile </li>
+                    <li>Change Password </li>
                 </ul>
             </div>
         </div>
@@ -46,38 +46,35 @@
 
 
 
-                                    <form method="POST" action="{{ route('user.profile.store') }}"
+                                    <form method="POST" action="{{ route('user.password.update') }}"
                                         enctype="multipart/form-data" class="default-form">
                                         @csrf
-                                        <div class="form-group">
-                                            <label>User Name</label>
-                                            <input type="text" name="username" value="{{ $userData->username }}">
+
+
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Old Password</label>
+                                            <input type="password" name="old_password"
+                                                class="form-control @error('old_password') is-invalid @enderror"
+                                                id="old_password">
+                                            @error('old_password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
-                                        <div class="form-group">
-                                            <label>Name</label>
-                                            <input type="text" name="name" value="{{ $userData->name }}">
+
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">New Password</label>
+                                            <input type="password" name="new_password"
+                                                class="form-control @error('new_password') is-invalid @enderror"
+                                                id="new_password">
+                                            @error('new_password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="email" name="email" value="{{ $userData->email }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Phone</label>
-                                            <input type="text" name="phone" value="{{ $userData->phone }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Address</label>
-                                            <input type="text" name="address" value="{{ $userData->address }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formFile" class="form-label">Default file input example</label>
-                                            <input class="form-control" type="file" name="photo" id="image">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="formFile" class="form-label"></label>
-                                            <img id="showImage"
-                                                src="{{ !empty($userData->photo) ? url('upload/user_images/' . $userData->photo) : url('upload/no_image.jpg') }}"
-                                                alt="" style="width: 100px; height: 100px;">
+
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Confirm New Password</label>
+                                            <input type="password" name="new_password_confirmation" class="form-control"
+                                                id="new_password_confirmation">
                                         </div>
 
 
@@ -85,20 +82,11 @@
                                             <button type="submit" class="theme-btn btn-one">Save Changes </button>
                                         </div>
                                     </form>
-
-
-
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-
-
                 </div>
-
-
             </div>
         </div>
     </section>
@@ -106,7 +94,8 @@
 
     <!-- subscribe-section -->
     <section class="subscribe-section bg-color-3">
-        <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-2.png') }});"></div>
+        <div class="pattern-layer" style="background-image: url({{ asset('frontend/assets/images/shape/shape-2.png') }});">
+        </div>
         <div class="auto-container">
             <div class="row clearfix">
                 <div class="col-lg-6 col-md-6 col-sm-12 text-column">
@@ -129,16 +118,4 @@
         </div>
     </section>
     <!-- subscribe-section end -->
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#image').change(function(e) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#showImage').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(e.target.files[0]);
-            });
-        });
-    </script>
 @endsection
