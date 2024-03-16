@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -55,4 +56,14 @@ Route::get('/admin/login', [AdminController::class, 'Adminlogin'])->name('admin.
 //Agent Group Middleware
 Route::middleware(['auth','role:agent'])->group(function(){
     Route::get('/agent/dashboard', [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
+});
+
+Route::middleware(['auth','role:admin'])->group(function(){
+
+
+    //Property type all route
+    Route::controller(PropertyTypeController::class)->group(function(){
+        Route::get('/all/type', 'AllType')->name('all.type');
+
+    });
 });
