@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -79,6 +80,13 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/edit/amenities/{id}', 'EditAmenities')->name('edit.amenities');
         Route::post('/update/amenities', 'UpdateAmenities')->name('update.amenities');
         Route::get('/delete/amenities/{id}', 'DeleteAmenities')->name('delete.amenities');
+
+    });
+    //Property all route
+    Route::controller(PropertyController::class)->group(function(){
+        Route::get('/all/property', 'AllProperty')->name('all.property');
+        Route::get('/add/property', 'AddProperty')->name('add.property');
+
 
     });
 });
