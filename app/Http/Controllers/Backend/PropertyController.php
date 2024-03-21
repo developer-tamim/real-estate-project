@@ -76,7 +76,7 @@ class PropertyController extends Controller
             'hot' => $request->hot,
             'agent_id' => $request->agent_id,
             'status' => 1,
-            'property_thumbnail' => $request->save_url,
+            'property_thumbnail' => $save_url,
             'created_at' => Carbon::now(),
         ]);
 
