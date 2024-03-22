@@ -13,7 +13,8 @@
                         <div class="card-body">
                             <h6 class="card-title">Edit Property</h6>
 
-                            <form method="POST" action="{{ route('update.property') }}" id="myForm" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('update.property') }}" id="myForm"
+                                enctype="multipart/form-data">
                                 @csrf
 
                                 <input type="hidden" name="id" value="{{ $property->id }}">
@@ -22,7 +23,8 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-3">
                                             <label class="form-label">Property Name</label>
-                                            <input type="text" name="property_name" class="form-control" value="{{ $property->property_name }}">
+                                            <input type="text" name="property_name" class="form-control"
+                                                value="{{ $property->property_name }}">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-6">
@@ -31,8 +33,12 @@
                                             <select name="property_status" class="form-select"
                                                 id="exampleFormControlSelect1">
                                                 <option selected="" disabled="">Select Status</option>
-                                                <option value="rent" {{ $property->property_status == 'rent' ? 'selected' : '' }}>For Rent</option>
-                                                <option value="buy" {{ $property->property_status == 'buy' ? 'selected' : '' }}>For Buy</option>
+                                                <option value="rent"
+                                                    {{ $property->property_status == 'rent' ? 'selected' : '' }}>For Rent
+                                                </option>
+                                                <option value="buy"
+                                                    {{ $property->property_status == 'buy' ? 'selected' : '' }}>For Buy
+                                                </option>
                                             </select>
                                         </div>
                                     </div><!-- Col -->
@@ -40,14 +46,16 @@
                                     <div class="col-sm-6">
                                         <div class="form-group mb-3">
                                             <label class="form-label">Lowest Price</label>
-                                            <input type="text" name="lowest_price" class="form-control" value="{{ $property->lowest_price }}">
+                                            <input type="text" name="lowest_price" class="form-control"
+                                                value="{{ $property->lowest_price }}">
                                         </div>
                                     </div><!-- Col -->
 
                                     <div class="col-sm-6">
                                         <div class="form-group mb-3">
                                             <label class="form-label">Max Price</label>
-                                            <input type="text" name="max_price" class="form-control" value="{{ $property->max_price }}">
+                                            <input type="text" name="max_price" class="form-control"
+                                                value="{{ $property->max_price }}">
                                         </div>
                                     </div><!-- Col -->
 
@@ -59,25 +67,29 @@
                                     <div class="col-sm-3">
                                         <div class="mb-3">
                                             <label class="form-label">Bedrooms</label>
-                                            <input type="text" name="bedrooms" class="form-control" value="{{ $property->bedrooms }}">
+                                            <input type="text" name="bedrooms" class="form-control"
+                                                value="{{ $property->bedrooms }}">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
                                         <div class="mb-3">
                                             <label class="form-label">Bathrooms</label>
-                                            <input type="text" name="bathrooms" class="form-control" value="{{ $property->bathrooms }}">
+                                            <input type="text" name="bathrooms" class="form-control"
+                                                value="{{ $property->bathrooms }}">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
                                         <div class="mb-3">
                                             <label class="form-label">Garage</label>
-                                            <input type="text" name="garage" class="form-control" value="{{ $property->garage }}">
+                                            <input type="text" name="garage" class="form-control"
+                                                value="{{ $property->garage }}">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
                                         <div class="mb-3">
                                             <label class="form-label">Garage Size</label>
-                                            <input type="text" name="garage_size" class="form-control" value="{{ $property->garage_size }}">
+                                            <input type="text" name="garage_size" class="form-control"
+                                                value="{{ $property->garage_size }}">
                                         </div>
                                     </div><!-- Col -->
                                 </div><!-- Row -->
@@ -87,25 +99,29 @@
                                     <div class="col-sm-3">
                                         <div class="mb-3">
                                             <label class="form-label">Address</label>
-                                            <input type="text" name="address" class="form-control" value="{{ $property->address }}">
+                                            <input type="text" name="address" class="form-control"
+                                                value="{{ $property->address }}">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
                                         <div class="mb-3">
                                             <label class="form-label">City</label>
-                                            <input type="text" name="city" class="form-control" value="{{ $property->city }}">
+                                            <input type="text" name="city" class="form-control"
+                                                value="{{ $property->city }}">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
                                         <div class="mb-3">
                                             <label class="form-label">State</label>
-                                            <input type="text" name="state" class="form-control" value="{{ $property->state }}">
+                                            <input type="text" name="state" class="form-control"
+                                                value="{{ $property->state }}">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-3">
                                         <div class="mb-3">
                                             <label class="form-label">Postal Code</label>
-                                            <input type="text" name="postal_code" class="form-control" value="{{ $property->postal_code }}">
+                                            <input type="text" name="postal_code" class="form-control"
+                                                value="{{ $property->postal_code }}">
                                         </div>
                                     </div><!-- Col -->
                                 </div><!-- Row -->
@@ -114,19 +130,22 @@
                                     <div class="col-sm-4">
                                         <div class="mb-3">
                                             <label class="form-label">Property Size</label>
-                                            <input type="text" name="property_size" class="form-control" value="{{ $property->property_size }}">
+                                            <input type="text" name="property_size" class="form-control"
+                                                value="{{ $property->property_size }}">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-4">
                                         <div class="mb-3">
                                             <label class="form-label">Property Video</label>
-                                            <input type="text" name="property_video" class="form-control" value="{{ $property->property_video }}">
+                                            <input type="text" name="property_video" class="form-control"
+                                                value="{{ $property->property_video }}">
                                         </div>
                                     </div><!-- Col -->
                                     <div class="col-sm-4">
                                         <div class="mb-3">
                                             <label class="form-label">Neighborhood</label>
-                                            <input type="text" name="neighborhood" class="form-control" value="{{ $property->neighborhood }}">
+                                            <input type="text" name="neighborhood" class="form-control"
+                                                value="{{ $property->neighborhood }}">
                                         </div>
                                     </div><!-- Col -->
                                 </div><!-- Row -->
@@ -137,7 +156,8 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Latitude</label>
-                                            <input type="text" name="latitude" class="form-control" value="{{ $property->latitude }}">
+                                            <input type="text" name="latitude" class="form-control"
+                                                value="{{ $property->latitude }}">
                                             <a href="https://www.latlong.net/convert-address-to-lat-long.html"
                                                 target="_blank">Go here ti get Latitude from address</a>
                                         </div>
@@ -145,7 +165,8 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Longitude</label>
-                                            <input type="text" name="longitude" class="form-control" value="{{ $property->longitude }}">
+                                            <input type="text" name="longitude" class="form-control"
+                                                value="{{ $property->longitude }}">
                                             <a href="https://www.latlong.net/convert-address-to-lat-long.html"
                                                 target="_blank">Go here ti get Longitude from address</a>
                                         </div>
@@ -160,7 +181,9 @@
                                                 <option selected="" disabled="">Select Type</option>
 
                                                 @foreach ($propertyType as $ptype)
-                                                    <option value="{{ $ptype->id }}" {{ $ptype->id == $property->ptype_id ? 'selected' : '' }}>{{ $ptype->type_name }}</option>
+                                                    <option value="{{ $ptype->id }}"
+                                                        {{ $ptype->id == $property->ptype_id ? 'selected' : '' }}>
+                                                        {{ $ptype->type_name }}</option>
                                                 @endforeach
 
                                             </select>
@@ -172,7 +195,9 @@
                                             <select name="amenities_id[]" class="js-example-basic-multiple form-select"
                                                 multiple="multiple" data-width="100%">
                                                 @foreach ($amenities as $amenity)
-                                                    <option value="{{ $amenity->id }}" {{ (in_array($amenity->id,$property_ame)) ? 'selected' : '' }}>{{ $amenity->amenities_name }}
+                                                    <option value="{{ $amenity->id }}"
+                                                        {{ in_array($amenity->id, $property_ame) ? 'selected' : '' }}>
+                                                        {{ $amenity->amenities_name }}
                                                     </option>
                                                 @endforeach
 
@@ -186,7 +211,9 @@
                                                 <option selected="" disabled="">Select Agent</option>
 
                                                 @foreach ($activeAgent as $agent)
-                                                    <option value="{{ $agent->id }}" {{ $agent->id == $property->agent_id ? 'selected' : '' }}>{{ $agent->name }}</option>
+                                                    <option value="{{ $agent->id }}"
+                                                        {{ $agent->id == $property->agent_id ? 'selected' : '' }}>
+                                                        {{ $agent->name }}</option>
                                                 @endforeach
 
                                             </select>
@@ -215,14 +242,14 @@
                                 <div class="mb-3">
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" name="featured" value="1" class="form-check-input"
-                                            id="checkInline1" {{ $property->featured == '1' ? 'checked' :'' }}>
+                                            id="checkInline1" {{ $property->featured == '1' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="checkInline1">
                                             Featured Property
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input type="checkbox" name="hot" value="1" class="form-check-input"
-                                            id="checkInline" {{ $property->hot == '1' ? 'checked' :'' }}>
+                                            id="checkInline" {{ $property->hot == '1' ? 'checked' : '' }}>
                                         <label class="form-check-label" for="checkInline">
                                             Hot Property
                                         </label>
@@ -244,6 +271,124 @@
 
 
 
+
+    <!-- Property main thumbnail image update -->
+
+    <div class="page-content" style="margin-top: -35px">
+
+        <div class="row profile-body">
+            <!-- middle wrapper start -->
+            <div class="col-md-12 col-xl-12 middle-wrapper">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">Edit Main Thumbnail Image</h6>
+
+                            <form method="POST" action="{{ route('update.property.thumbnail') }}" id="myForm"
+                                enctype="multipart/form-data">
+                                @csrf
+
+                                <input type="hidden" name="id" value="{{ $property->id }}">
+                                <input type="hidden" name="old_img" value="{{ $property->property_thumbnail }}">
+
+                                <div class="row mb-6">
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label">Main Thumnail</label>
+                                        <input type="file" name="property_thumbnail" class="form-control"
+                                            onchange="mainThumbUrl(this)">
+
+                                        <img id="mainThumb" src="">
+
+                                    </div><!-- Col -->
+                                    <div class="form-group col-md-6">
+                                        <label class="form-label"></label>
+                                        <img src="{{ asset($property->property_thumbnail) }}"
+                                            style="width:100px; height:100px;">
+
+
+                                    </div><!-- Col -->
+                                </div><!-- row -->
+
+
+                                <button type="submit" class="btn btn-primary submit">Update Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- middle wrapper end -->
+        </div>
+    </div>
+
+    <!-- End Property main thumbnail image update -->
+
+
+
+
+    <!-- Property multi image update -->
+
+    <div class="page-content" style="margin-top: -35px">
+
+        <div class="row profile-body">
+            <!-- middle wrapper start -->
+            <div class="col-md-12 col-xl-12 middle-wrapper">
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">Edit Multi Images</h6>
+
+                            <form method="POST" action="{{ route('update.property.thumbnail') }}" id="myForm"
+                                enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Sl</th>
+                                                <th>Image</th>
+                                                <th>Change Image</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @foreach ($multiImage as $key =>$img)
+
+                                            <tr>
+                                                <td>{{ $key+1 }}</td>
+                                                <td class="py-1">
+                                                    <img src="{{ asset($img->photo_name) }}" alt="image" style="width: 50px; height:50px;">
+                                                </td>
+                                                <td>
+                                                    <input type="file" class="form-group" name="multi_img">
+                                                </td>
+                                                <td>
+                                                    <input type="submit" class="btn btn-primary" value="Update Image">
+                                                    <a href="" class="btn btn-danger" id="delete">Delete</a>
+                                                </td>
+                                            </tr>
+
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+
+                                <br><br>
+                                <button type="submit" class="btn btn-primary submit">Update Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- middle wrapper end -->
+        </div>
+    </div>
+
+    <!-- End Property multi image update -->
 
 
 

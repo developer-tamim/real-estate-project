@@ -121,11 +121,13 @@ class PropertyController extends Controller
         $type = $property->amenities_id;
         $property_ame = explode(',', $type);
 
+        $multiImage = MultiImage::where('property_id' , $id)->get();
+
         $propertyType = PropertyType::latest()->get();
         $amenities = Amenities::latest()->get();
         $activeAgent = User::where('status', 'active')->where('role', 'agent')->latest()->get();
 
-        return view('backend.property.edit_property', compact('property', 'propertyType', 'amenities', 'activeAgent', 'property_ame'));
+        return view('backend.property.edit_property', compact('property', 'propertyType', 'amenities', 'activeAgent', 'property_ame', 'multiImage'));
     }
 
     public function UpdateProperty(Request $request){
@@ -172,5 +174,32 @@ class PropertyController extends Controller
         );
 
         return redirect()->route('all.property')->with($notification);
+    }
+    public function UpdatePropertyThumbnail(Request $request){
+        $property_id = $request->id;
+        $oldImage = $request->old_img;
+
+        $image = $request->file('property_thumbnail');
+        $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(370, 250)->save('upload/property/thumbnail/' . $name_gen);
+        $save_url = 'upload/property/thumbnail/' . $name_gen;
+
+        if(file_exists($oldImage)){
+            unlink($oldImage);
+        }
+
+        Property::findOrFail($property_id)->update([
+            'property_thumbnail' => $save_url,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message' => 'Property Image Thumbnail Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+
+
     }
 }
