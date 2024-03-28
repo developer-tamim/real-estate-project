@@ -337,7 +337,7 @@
                         <div class="card-body">
                             <h6 class="card-title">Edit Multi Images</h6>
 
-                            <form method="POST" action="{{ route('update.property.thumbnail') }}" id="myForm"
+                            <form method="POST" action="{{ route('update.property.multi-image') }}" id="myForm"
                                 enctype="multipart/form-data">
                                 @csrf
 
@@ -353,33 +353,57 @@
                                         </thead>
                                         <tbody>
 
-                                            @foreach ($multiImage as $key =>$img)
-
-                                            <tr>
-                                                <td>{{ $key+1 }}</td>
-                                                <td class="py-1">
-                                                    <img src="{{ asset($img->photo_name) }}" alt="image" style="width: 50px; height:50px;">
-                                                </td>
-                                                <td>
-                                                    <input type="file" class="form-group" name="multi_img">
-                                                </td>
-                                                <td>
-                                                    <input type="submit" class="btn btn-primary" value="Update Image">
-                                                    <a href="" class="btn btn-danger" id="delete">Delete</a>
-                                                </td>
-                                            </tr>
-
+                                            @foreach ($multiImage as $key => $img)
+                                                <tr>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td class="py-1">
+                                                        <img src="{{ asset($img->photo_name) }}" alt="image"
+                                                            style="width: 50px; height:50px;">
+                                                    </td>
+                                                    <td>
+                                                        {{-- <input type="file" class="form-control" name="multi_img[]"> --}}
+                                                        <input type="file" class="form-control"
+                                                            name="multi_img[{{ $img->id }}]">
+                                                    </td>
+                                                    <td>
+                                                        <input type="submit" class="btn btn-primary px-4"
+                                                            value="Update Image">
+                                                        <a href="{{ route('property.multi-image.delete', $img->id) }}"
+                                                            class="btn btn-danger" id="delete">Delete</a>
+                                                    </td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                 </div>
-
-
-
-
-                                <br><br>
-                                <button type="submit" class="btn btn-primary submit">Update Changes</button>
                             </form>
+
+                            <form method="POST" action="{{ route('store.new.multi-image') }}" id="myForm"
+                                enctype="multipart/form-data">
+                                @csrf
+
+                                <input type="hidden" name="imageid" value="{{ $property->id }}">
+
+
+                                <table class="table table-striped">
+                                    <tbody>
+
+                                        <tr>
+                                            <td>
+                                                <input type="file" class="form-control" name="multi_img">
+                                            </td>
+                                            <td>
+                                                <input type="submit" class="btn btn-info px-4" value="Add Images">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+
+                            </form>
+
+
                         </div>
                     </div>
                 </div>
