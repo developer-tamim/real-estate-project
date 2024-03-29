@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\RedirectIfAuthenticated;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +53,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('/admin/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('admin.update.password');
 });
-Route::get('/admin/login', [AdminController::class, 'Adminlogin'])->name('admin.login');
+Route::get('/admin/login', [AdminController::class, 'Adminlogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
 
 //Agent Group Middleware
 Route::middleware(['auth','role:agent'])->group(function(){
