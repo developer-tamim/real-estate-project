@@ -223,7 +223,7 @@
 
                                 <div class="col-sm-12">
                                     <div class="mb-3">
-                                        <label class="form-label">Shor Description</label>
+                                        <label class="form-label">Short Description</label>
                                         <textarea name="short_description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $property->short_description }}</textarea>
 
                                     </div>
