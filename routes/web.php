@@ -53,7 +53,16 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('/admin/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('admin.update.password');
 });
-Route::get('/admin/login', [AdminController::class, 'Adminlogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
+
+
+
+
+Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
+
+Route::get('/agent/login', [AgentController::class, 'AgentLogin'])->name('agent.login')->middleware(RedirectIfAuthenticated::class);
+
+
+
 
 //Agent Group Middleware
 Route::middleware(['auth','role:agent'])->group(function(){
