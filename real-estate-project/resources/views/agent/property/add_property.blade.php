@@ -1,5 +1,5 @@
-@extends('admin.admin_dashboard')
-@section('content')
+@extends('agent.agent_dashboard')
+@section('agent')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -13,7 +13,7 @@
                         <div class="card-body">
                             <h6 class="card-title">Add Property</h6>
 
-                            <form method="POST" action="{{ route('store.property') }}" id="myForm" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('agent.store.property') }}" id="myForm" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -171,7 +171,7 @@
                                 </div><!-- Row -->
 
                                 <div class="row">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <div class="form-group mb-3">
                                             <label class="form-label">Property Type</label>
                                             <select name="ptype_id" class="form-select" id="exampleFormControlSelect1">
@@ -184,7 +184,7 @@
                                             </select>
                                         </div>
                                     </div><!-- Col -->
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label class="form-label">Property Amenities</label>
                                             <select name="amenities_id[]" class="js-example-basic-multiple form-select"
@@ -197,19 +197,7 @@
                                             </select>
                                         </div>
                                     </div><!-- Col -->
-                                    <div class="col-sm-4">
-                                        <div class="mb-3">
-                                            <label class="form-label">Agent</label>
-                                            <select name="agent_id" class="form-select" id="exampleFormControlSelect1">
-                                                <option selected="" disabled="">Select Agent</option>
 
-                                                @foreach ($activeAgent as $agent)
-                                                    <option value="{{ $agent->id }}">{{ $agent->name }}</option>
-                                                @endforeach
-
-                                            </select>
-                                        </div>
-                                    </div><!-- Col -->
                                 </div><!-- Row -->
 
                                 <div class="col-sm-12">

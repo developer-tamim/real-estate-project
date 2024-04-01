@@ -1,5 +1,5 @@
-@extends('admin.admin_dashboard')
-@section('content')
+@extends('agent.agent_dashboard')
+@section('agent')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -13,7 +13,7 @@
                         <div class="card-body">
                             <h6 class="card-title">Edit Property</h6>
 
-                            <form method="POST" action="{{ route('update.property') }}" id="myForm"
+                            <form method="POST" action="{{ route('agent.update.property') }}" id="myForm"
                                 enctype="multipart/form-data">
                                 @csrf
 
@@ -204,21 +204,6 @@
                                             </select>
                                         </div>
                                     </div><!-- Col -->
-                                    <div class="col-sm-4">
-                                        <div class="mb-3">
-                                            <label class="form-label">Agent</label>
-                                            <select name="agent_id" class="form-select" id="exampleFormControlSelect1">
-                                                <option selected="" disabled="">Select Agent</option>
-
-                                                @foreach ($activeAgent as $agent)
-                                                    <option value="{{ $agent->id }}"
-                                                        {{ $agent->id == $property->agent_id ? 'selected' : '' }}>
-                                                        {{ $agent->name }}</option>
-                                                @endforeach
-
-                                            </select>
-                                        </div>
-                                    </div><!-- Col -->
                                 </div><!-- Row -->
 
                                 <div class="col-sm-12">
@@ -284,7 +269,7 @@
                         <div class="card-body">
                             <h6 class="card-title">Edit Main Thumbnail Image</h6>
 
-                            <form method="POST" action="{{ route('update.property.thumbnail') }}" id="myForm"
+                            <form method="POST" action="{{ route('agent.update.property.thumbnail') }}" id="myForm"
                                 enctype="multipart/form-data">
                                 @csrf
 
@@ -337,7 +322,7 @@
                         <div class="card-body">
                             <h6 class="card-title">Edit Multi Images</h6>
 
-                            <form method="POST" action="{{ route('update.property.multi-image') }}" id="myForm"
+                            <form method="POST" action="{{ route('agent.update.property.multi-image') }}" id="myForm"
                                 enctype="multipart/form-data">
                                 @csrf
 
@@ -368,7 +353,7 @@
                                                     <td>
                                                         <input type="submit" class="btn btn-primary px-4"
                                                             value="Update Image">
-                                                        <a href="{{ route('property.multi-image.delete', $img->id) }}"
+                                                        <a href="{{ route('agent.property.multi-image.delete', $img->id) }}"
                                                             class="btn btn-danger" id="delete">Delete</a>
                                                     </td>
                                                 </tr>
@@ -378,7 +363,7 @@
                                 </div>
                             </form>
 
-                            <form method="POST" action="{{ route('store.new.multi-image') }}" id="myForm"
+                            <form method="POST" action="{{ route('agent.store.new.multi-image') }}" id="myForm"
                                 enctype="multipart/form-data">
                                 @csrf
 
@@ -426,7 +411,7 @@
                         <div class="card-body">
                             <h6 class="card-title">Edit Property Facility</h6>
 
-                            <form method="POST" action="{{ route('update.property.facilities') }}" id="myForm"
+                            <form method="POST" action="{{ route('agent.update.property.facilities') }}" id="myForm"
                                 enctype="multipart/form-data">
                                 @csrf
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Agent\AgentPropertyController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\PropertyTypeController;
@@ -127,6 +128,33 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/edit/agent/{id}', 'EditAgent')->name('edit.agent');
         Route::post('/update/agent', 'UpdateAgent')->name('update.agent');
         Route::get('/delete/agent/{id}', 'DeleteAgent')->name('delete.agent');
+        Route::get('/changeStatus', 'changeStatus');
 
     });
+});
+
+
+//Agent Group Middleware
+Route::middleware(['auth','role:agent'])->group(function(){
+
+    // Agent All Property
+    Route::controller(AgentPropertyController::class)->group(function(){
+        Route::get('/agent/all/property', 'AgentAllProperty')->name('agent.all.property');
+        Route::get('/agent/add/property', 'AgentAddProperty')->name('agent.add.property');
+        Route::post('/agent/store/property', 'AgentStoreProperty')->name('agent.store.property');
+        Route::get('/agent/edit/property/{id}', 'AgentEditProperty')->name('agent.edit.property');
+        Route::post('/agent/update/property', 'AgentUpdateProperty')->name('agent.update.property');
+        Route::post('/agent/update/property/thumbnail', 'AgentUpdatePropertyThumbnail')->name('agent.update.property.thumbnail');
+        Route::post('/agent/update/property/multi-image', 'AgentUpdatePropertyMultiImage')->name('agent.update.property.multi-image');
+        Route::get('/agent/property/multi-image/delete/{id}', 'AgentPropertyMultiImageDelete')->name('agent.property.multi-image.delete');
+        Route::post('/agent/store/new/multi-image', 'AgentStoreNewMultiImage')->name('agent.store.new.multi-image');
+        Route::post('/agent/update/property/facilities', 'AgentUpdatePropertyFacilities')->name('agent.update.property.facilities');
+        Route::get('/agent/delete/property/{id}', 'AgentDeleteProperty')->name('agent.delete.property');
+        Route::get('/agent/details/property/{id}', 'AgentDetailsProperty')->name('agent.details.property');
+        Route::post('/agent/inactive/property', 'AgentInactiveProperty')->name('agent.inactive.property');
+        Route::post('/agent/active/property', 'AgentActiveProperty')->name('agent.active.property');
+
+
+    });
+
 });
