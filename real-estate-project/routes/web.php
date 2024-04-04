@@ -5,6 +5,7 @@ use App\Http\Controllers\Agent\AgentPropertyController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\PropertyTypeController;
+use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -173,3 +174,8 @@ Route::middleware(['auth','role:agent'])->group(function(){
     });
 
 });
+
+
+
+// Frontend Property Details All Routes
+Route::get('/property/details/{id}/{slug}', [IndexController::class, 'PropertyDetails']);
