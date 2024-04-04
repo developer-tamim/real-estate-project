@@ -20,46 +20,30 @@
                                     <tr>
                                         <th>Sl</th>
                                         <th>Image</th>
-                                        <th>Name</th>
-                                        <th>P Type</th>
-                                        <th>Status Type</th>
-                                        <th>City</th>
-                                        <th>Code</th>
-                                        <th>Status</th>
+                                        <th>Package</th>
+                                        <th>Invoice</th>
+                                        <th>Amount</th>
+                                        <th>Date</th>
                                         <th>Action</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($property as $key => $item)
+                                    @foreach ($packagehistory as $key => $item)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
-                                            <td><img src="{{ asset($item->property_thumbnail) }}" alt=""
+                                            <td><img src="{{ (!empty($item->user->photo)) ? url('upload/agent_images/'.$item->user->photo):url('upload/no_image.jpg') }}" alt=""
                                                     style="width: 70px; height:70px;"></td>
-                                            <td>{{ $item->property_name }}</td>
-                                            <td>{{ $item['type']['type_name'] }}</td>
-                                            <td>{{ $item->property_status }}</td>
-                                            <td>{{ $item->city }}</td>
-                                            <td>{{ $item->property_code }}</td>
-                                            <td>
-                                                @if ($item->status == 1)
-                                                    <span class="badge rounded-pill bg-success">Active</span>
-                                                @else
-                                                    <span class="badge rounded-pill bg-danger">Inactive</span>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('agent.details.property', $item->id) }}"
-                                                    class="btn btn-inverse-info" title="Details"><i
-                                                        data-feather="eye"></i></a>
+                                            <td>{{ $item->package_name }}</td>
+                                            <td>{{ $item->invoice }}</td>
+                                            <td>{{ $item->package_amount }}</td>
+                                            <td>{{ $item->created_at->format('l d M Y') }}</td>
 
-                                                <a href="{{ route('agent.edit.property', $item->id) }}"
-                                                    class="btn btn-inverse-warning" title="Edit"><i
-                                                        data-feather="edit"></i></a>
+                                            <td>
+                                                <a href="{{ route('agent.package.invoice', $item->id) }}"
+                                                    class="btn btn-inverse-warning" title="Download"><i
+                                                        data-feather="download"></i></a>
 
-                                                <a href="{{ route('agent.delete.property', $item->id) }}"
-                                                    class="btn btn-inverse-danger" id="delete" title="Delete"><i
-                                                        data-feather="trash-2"></i></a>
                                             </td>
 
                                         </tr>
