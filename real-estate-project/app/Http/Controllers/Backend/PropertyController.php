@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Amenities;
 use App\Models\Facility;
 use App\Models\MultiImage;
+use App\Models\PackagePlan;
 use App\Models\Property;
 use App\Models\PropertyType;
 use App\Models\User;
@@ -14,6 +15,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use PHPUnit\Framework\Constraint\Count;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PropertyController extends Controller
 {
@@ -365,6 +367,22 @@ class PropertyController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('all.property')->with($notification);
+    }
+
+    public function AdminPackageHistory(){
+        $packagehistory = PackagePlan::latest()->get();
+
+        return view('backend.package.package_history', compact('packagehistory'));
+    }
+
+    public function PackageInvoice($id){
+        $packagehistory = PackagePlan::where('id',$id)->first();
+
+        $pdf = Pdf::loadView('backend.package.package_history_invoice', compact('packagehistory'))->setPaper('a4', 'landscape')->setOption([
+            'tempDir' => public_path(),
+            'chroot' => public_path(),
+        ]);
+    return $pdf->download('invoice.pdf');
     }
 
 
