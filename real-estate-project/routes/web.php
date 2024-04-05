@@ -6,6 +6,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\Backend\PropertyController;
 use App\Http\Controllers\Backend\PropertyTypeController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\WishListController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +30,7 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 
 
 //User frontend all routes
-Route::get('/', [UserController::class, 'Index']);
+Route::get('/', [UserController::class, 'Index'])->name('frontend');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -179,3 +180,6 @@ Route::middleware(['auth','role:agent'])->group(function(){
 
 // Frontend Property Details All Routes
 Route::get('/property/details/{id}/{slug}', [IndexController::class, 'PropertyDetails']);
+
+// Wishlist All Routes
+Route::post('/add-to-wishList/{property_id}', [WishListController::class, 'AddToWishList']);

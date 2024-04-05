@@ -11,6 +11,8 @@
     <!-- Fav Icon -->
     <link rel="icon" href="{{ asset('frontend/assets/images/favicon.ico') }}" type="image/x-icon">
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -29,7 +31,7 @@
     <link href="{{ asset('frontend/assets/css/switcher-style.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/assets/css/responsive.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
 </head>
 
@@ -94,34 +96,83 @@
 
     <!-- map script -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-CE0deH3Jhj6GN4YvdCFZS7DpbXexzGU"></script>
-    <script src="{{asset('frontend/assets/js/gmaps.js')}}"></script>
-    <script src="{{asset('frontend/assets/js/map-helper.js')}}"></script>
+    <script src="{{ asset('frontend/assets/js/gmaps.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/map-helper.js') }}"></script>
 
     <!-- main-js -->
     <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
-     @if(Session::has('message'))
-     var type = "{{ Session::get('alert-type','info') }}"
-     switch(type){
-        case 'info':
-        toastr.info(" {{ Session::get('message') }} ");
-        break;
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch (type) {
+                case 'info':
+                    toastr.info(" {{ Session::get('message') }} ");
+                    break;
 
-        case 'success':
-        toastr.success(" {{ Session::get('message') }} ");
-        break;
+                case 'success':
+                    toastr.success(" {{ Session::get('message') }} ");
+                    break;
 
-        case 'warning':
-        toastr.warning(" {{ Session::get('message') }} ");
-        break;
+                case 'warning':
+                    toastr.warning(" {{ Session::get('message') }} ");
+                    break;
 
-        case 'error':
-        toastr.error(" {{ Session::get('message') }} ");
-        break;
-     }
-     @endif
+                case 'error':
+                    toastr.error(" {{ Session::get('message') }} ");
+                    break;
+            }
+        @endif
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+
+        function addToWishList(property_id) {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: "/add-to-wishList/" + property_id,
+
+                success: function(data) {
+
+                    // Start Message
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                        })
+
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
+                    }
+
+                    // End Message
+                }
+            })
+        }
     </script>
 
 </body><!-- End of .page_wrapper -->

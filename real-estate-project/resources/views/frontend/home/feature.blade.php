@@ -23,7 +23,7 @@
                                 <figure class="image"><img src="{{ asset($item->property_thumbnail) }}" alt="">
                                 </figure>
                                 <div class="batch"><i class="icon-11"></i></div>
-                                <span class="category">{{ $item->type->type_name }}</span>
+                                <span class="category">Featured</span>
                             </div>
                             <div class="lower-content">
                                 <div class="author-info clearfix">
@@ -58,7 +58,7 @@
                                     </div>
                                     <ul class="other-option pull-right clearfix">
                                         <li><a href="property-details.html"><i class="icon-12"></i></a></li>
-                                        <li><a href="property-details.html"><i class="icon-13"></i></a></li>
+                                        <li><a arisa-lable="Add To WishList" class="action-btn" id="{{ $item->id }}" onclick="addToWishList(this.id)"><i class="icon-13"></i></a></li>
                                     </ul>
                                 </div>
                                 <p>{{ $item->short_description }}</p>

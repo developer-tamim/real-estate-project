@@ -39,7 +39,7 @@
         <div class="outer-box">
             <div class="main-box">
                 <div class="logo-box">
-                    <figure class="logo"><a href="index.html"><img
+                    <figure class="logo"><a href="{{ route('frontend') }}"><img
                                 src="{{ asset('frontend/assets/images/logo.png') }}" alt=""></a>
                     </figure>
                 </div>
