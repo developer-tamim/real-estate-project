@@ -34,60 +34,6 @@
                 @include('frontend.dashboard.dashboard_sidebar')
 
 
-                {{-- <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
-
-
-                    <div class="blog-sidebar">
-                        <div class="sidebar-widget post-widget">
-                            <div class="widget-title">
-                                <h4>User Profile </h4>
-                            </div>
-                            <div class="post-inner">
-                                <div class="post">
-                                    <figure class="post-thumb"><a href="blog-details.html">
-                                            <img src="{{ asset('frontend/assets/images/news/post-1.jpg') }}" alt=""></a></figure>
-                                    <h5><a href="blog-details.html">Kazi Ariyan </a></h5>
-                                    <p>user@gmail.com </p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="sidebar-widget category-widget">
-                            <div class="widget-title">
-                                <h4>Category</h4>
-                            </div>
-                            <div class="widget-content">
-                                <ul class="category-list ">
-
-                                    <li> <a href="blog-details.html"><i class="fab fa fa-envelope "></i> Dashboard </a></li>
-
-
-                                    <li><a href="blog-details.html"><i class="fa fa-cog" aria-hidden="true"></i>
-                                            Settings</a></li>
-                                    <li><a href="blog-details.html"><i class="fa fa-credit-card" aria-hidden="true"></i> Buy
-                                            credits<span class="badge badge-info">( 10 credits)</span></a></li>
-                                    <li><a href="blog-details.html"><i class="fa fa-list-alt" aria-hidden="true"></i></i>
-                                            Properties </a></li>
-                                    <li><a href="blog-details.html"><i class="fa fa-indent" aria-hidden="true"></i> Add a
-                                            Property </a></li>
-                                    <li><a href="blog-details.html"><i class="fa fa-key" aria-hidden="true"></i> Security
-                                        </a></li>
-                                    <li><a href="blog-details.html"><i class="fa fa-chevron-circle-up"
-                                                aria-hidden="true"></i> Logout </a></li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-
-                </div> --}}
-
 
 
                 <div class="col-lg-8 col-md-12 col-sm-12 content-side">
@@ -100,11 +46,46 @@
 
                                 <div id="wishlist"></div>
 
+                                {{-- <div class="deals-block-one">
+                                    <div class="inner-box">
+                                        <div class="image-box">
+                                            <figure class="image"><img src="{{ asset('frontend/assets/images/resource/deals-3.jpg') }}" alt=""></figure>
+                                            <div class="batch"><i class="icon-11"></i></div>
+                                            <span class="category">Featured</span>
+                                            <div class="buy-btn"><a href="property-details.html">For Buy</a></div>
+                                        </div>
+                                        <div class="lower-content">
+                                            <div class="title-text"><h4><a href="property-details.html">Villa on Grand Avenue</a></h4></div>
+                                            <div class="price-box clearfix">
+                                                <div class="price-info pull-left">
+                                                    <h6>Start From</h6>
+                                                    <h4>$30,000.00</h4>
+                                                </div>
+
+                                            </div>
+
+                                            <ul class="more-details clearfix">
+                                                <li><i class="icon-14"></i>3 Beds</li>
+                                                <li><i class="icon-15"></i>2 Baths</li>
+                                                <li><i class="icon-16"></i>600 Sq Ft</li>
+                                            </ul>
+                                            <div class="other-info-box clearfix">
+
+                                                <ul class="other-option pull-right clearfix">
+
+                                                    <li><a href="property-details.html"><i class="icon-13"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> --}}
+
+
+
+
 
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
