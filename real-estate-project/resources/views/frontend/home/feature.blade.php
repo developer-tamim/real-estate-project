@@ -58,7 +58,7 @@
                                     </div>
 
                                     <ul class="other-option pull-right clearfix">
-                                        <li><a href="property-details.html"><i class="icon-12"></i></a></li>
+                                        <li><a arisa-lable="Compare" class="action-btn" id="{{ $item->id }}" onclick="addToCompare(this.id)"><i class="icon-12"></i></a></li>
                                         <li><a arisa-lable="Add To WishList" class="action-btn" id="{{ $item->id }}" onclick="addToWishList(this.id)"><i class="icon-13"></i></a></li>
                                     </ul>
 
@@ -69,8 +69,9 @@
                                     <li><i class="icon-15"></i>{{ $item->bathrooms }} Baths</li>
                                     <li><i class="icon-16"></i>{{ $item->property_size }} Sq Ft</li>
                                 </ul>
-                                <div class="btn-box"><a href="{{ url('property/details/'.$item->id.'/'.$item->property_slug) }}" class="theme-btn btn-two">See
-                                        Details</a></div>
+                                <div class="btn-box"><a href="{{ url('property/details/'.$item->id.'/'.$item->property_slug) }}" class="theme-btn btn-two">
+                                    See Details
+                                </a></div>
                             </div>
                         </div>
                     </div>
