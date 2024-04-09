@@ -142,6 +142,7 @@
                 url: "/add-to-wishList/" + property_id,
 
                 success: function(data) {
+                    wishlist();
 
                     // Start Message
 
@@ -189,8 +190,8 @@
 
                     var rows = ""
                     $.each(respons.wishlist, function(key, value) {
-                        rows += `
-                        <div class="deals-block-one">
+                        rows +=
+                        `<div class="deals-block-one">
                                     <div class="inner-box">
                                         <div class="image-box">
                                             <figure class="image"><img
@@ -219,14 +220,12 @@
                                             <div class="other-info-box clearfix">
 
                                                 <ul class="other-option pull-right clearfix">
-                                                    <li><a href="property-details.html"><i class="icon-13"></i></a></li>
+                                                    <li><a type="submit" class="text-body" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-trash"></i></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                        `
+                                </div>`
                     });
 
                     $('#wishlist').html(rows);
@@ -236,6 +235,50 @@
         }
 
         wishlist();
+
+
+
+        // wishlist remove
+
+        function wishlistRemove(id) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "/wishlist-remove/" + id,
+
+                success: function(data) {
+                    wishlist();
+
+                    // Start Message
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            icon: 'success',
+                            title: data.success,
+                        })
+
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            icon: 'error',
+                            title: data.error,
+                        })
+                    }
+
+                    // End Message
+                }
+            })
+        }
     </script>
 
 </body><!-- End of .page_wrapper -->
