@@ -177,6 +177,8 @@ Route::middleware(['auth','role:agent'])->group(function(){
         Route::post('/agent/inactive/property', 'AgentInactiveProperty')->name('agent.inactive.property');
         Route::post('/agent/active/property', 'AgentActiveProperty')->name('agent.active.property');
 
+        Route::get('/agent/property/message', 'AgentPropertyMessage')->name('agent.property.message');
+        Route::get('/agent/message/details/{id}', 'AgentMessageDetails')->name('agent.message.details');
 
     });
 
