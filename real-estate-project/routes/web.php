@@ -109,6 +109,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/delete/type/{id}', 'DeleteType')->name('delete.type');
 
     });
+
+
     //Property type all route
     Route::controller(PropertyTypeController::class)->group(function(){
         Route::get('/all/amenity', 'AllAmenity')->name('all.amenity');
@@ -119,6 +121,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/delete/amenities/{id}', 'DeleteAmenities')->name('delete.amenities');
 
     });
+
+
     //Property all route
     Route::controller(PropertyController::class)->group(function(){
         Route::get('/all/property', 'AllProperty')->name('all.property');
@@ -138,6 +142,11 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
         Route::get('/admin/package/history', 'AdminPackageHistory')->name('admin.package.history');
         Route::get('/package/invoice/{id}', 'PackageInvoice')->name('package.invoice');
+
+
+        Route::get('/admin/property/message', 'AdminPropertyMessage')->name('admin.property.message');
+        Route::get('/admin/message/details/{id}', 'AdminMessageDetails')->name('admin.message.details');
+
 
 
     });

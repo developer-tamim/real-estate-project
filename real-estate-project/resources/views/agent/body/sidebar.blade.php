@@ -66,7 +66,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('agent.property.message') }}" class="nav-link">
+                    <a href="{{ route('admin.property.message') }}" class="nav-link">
                         <i class="link-icon" data-feather="calendar"></i>
                         <span class="link-title">Property Message</span>
                     </a>

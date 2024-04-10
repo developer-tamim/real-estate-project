@@ -8,6 +8,7 @@ use App\Models\Facility;
 use App\Models\MultiImage;
 use App\Models\PackagePlan;
 use App\Models\Property;
+use App\Models\PropertyMessage;
 use App\Models\PropertyType;
 use App\Models\User;
 use Carbon\Carbon;
@@ -16,6 +17,7 @@ use Intervention\Image\Facades\Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use PHPUnit\Framework\Constraint\Count;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
 
 class PropertyController extends Controller
 {
@@ -383,6 +385,25 @@ class PropertyController extends Controller
             'chroot' => public_path(),
         ]);
     return $pdf->download('invoice.pdf');
+    }
+
+    public function AdminPropertyMessage()
+    {
+
+       $usermsg = PropertyMessage::latest()->get();
+
+       return view('backend.message.all_message', compact('usermsg'));
+
+    }
+
+    public function AdminMessageDetails($id)
+    {
+
+       $usermsg = PropertyMessage::latest()->get();
+
+       $msgdetails = PropertyMessage::findOrFail($id);
+
+       return view('backend.message.message_details', compact('usermsg', 'msgdetails'));
     }
 
 
