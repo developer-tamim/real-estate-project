@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Agent;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ScheduleMail;
 use App\Models\Amenities;
 use App\Models\Facility;
 use App\Models\MultiImage;
@@ -10,6 +11,8 @@ use App\Models\PackagePlan;
 use App\Models\Property;
 use App\Models\PropertyMessage;
 use App\Models\PropertyType;
+use App\Models\Schedule;
+use App\Models\State;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -19,6 +22,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Framework\Constraint\Count;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
 
 class AgentPropertyController extends Controller
 {
@@ -34,6 +38,7 @@ class AgentPropertyController extends Controller
 
         $propertyType = PropertyType::latest()->get();
         $amenities = Amenities::latest()->get();
+        $pstate = State::latest()->get();
 
         $id = Auth::user()->id;
         $property = User::where('role', 'agent')->where('id', $id)->first();
@@ -42,7 +47,7 @@ class AgentPropertyController extends Controller
         if ($pcount == 1 || $pcount == 7) {
             return redirect()->route('buy.package');
         } else {
-            return view('agent.property.add_property', compact('propertyType', 'amenities'));
+            return view('agent.property.add_property', compact('propertyType', 'amenities', 'pstate'));
         }
     }
 
@@ -146,10 +151,11 @@ class AgentPropertyController extends Controller
         $property_ame = explode(',', $type);
 
         $multiImage = MultiImage::where('property_id', $id)->get();
+        $pstate = State::latest()->get();
 
         $propertyType = PropertyType::latest()->get();
         $amenities = Amenities::latest()->get();
-        return view('agent.property.edit_property', compact('property', 'propertyType', 'amenities', 'property_ame', 'multiImage', 'facilities'));
+        return view('agent.property.edit_property', compact('property', 'propertyType', 'amenities', 'property_ame', 'multiImage', 'facilities', 'pstate'));
     }
 
     public function AgentUpdateProperty(Request $request)
@@ -492,4 +498,52 @@ class AgentPropertyController extends Controller
 
        return view('agent.message.message_details', compact('usermsg', 'msgdetails'));
     }
+
+    public function AgentScheduleRequest(){
+
+        $id = Auth::user()->id;
+        $usermsg = Schedule::where('agent_id',$id)->get();
+        return view('agent.schedule.schedule_request',compact('usermsg'));
+
+    }// End Method
+
+    public function AgentDetailsSchedule($id){
+
+        $schedule = Schedule::findOrFail($id);
+        return view('agent.schedule.schedule_details',compact('schedule'));
+
+    } // End Method
+
+    public function AgentUpdateSchedule(Request $request){
+
+        $sid = $request->id;
+
+        Schedule::findOrFail($sid)->update([
+            'status' => '1',
+
+        ]);
+
+        //// Start Send Email
+
+       $sendmail = Schedule::findOrFail($sid);
+
+       $data = [
+            'tour_date' => $sendmail->tour_date,
+            'tour_time' => $sendmail->tour_time,
+       ];
+
+       Mail::to($request->email)->send(new ScheduleMail($data));
+
+
+        /// End Send Email
+
+         $notification = array(
+            'message' => 'You have Confirm Schedule Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('agent.schedule.request')->with($notification);
+
+
+    }// End Method
 }
