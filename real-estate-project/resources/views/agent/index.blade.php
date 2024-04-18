@@ -6,16 +6,16 @@
         $status = $agentId->status;
     @endphp
 
-
     <div class="page-content">
 
 
         @if ($status === 'active')
-            <h4>Agent Account is <span class="text-success">Active</span></h4>
+            <h4>Agent Account Is <span class="text-success">Active </span> </h4>
         @else
-            <h4>Agent Account is <span class="text-danger">Inactive</span></h4>
-            <p class="text-danger">Please wait, Admin will check and approve your account</p>
+            <h4>Agent Account Is <span class="text-danger">Inactive </span> </h4>
+            <p class="text-danger"><b> Plz wait admin will check and approve your account</b></p>
         @endif
+
 
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div>
@@ -185,7 +185,6 @@
         </div> <!-- row -->
 
 
-
         <div class="row">
             <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
                 <div class="card">
@@ -216,8 +215,8 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="text-muted">Sales are activities related to selling or the number of goods or
-                            services sold in a given time period.</p>
+                        <p class="text-muted">Sales are activities related to selling or the number of goods or services
+                            sold in a given time period.</p>
                         <div id="monthlySalesChart"></div>
                     </div>
                 </div>
@@ -421,8 +420,7 @@
                                         <td class="border-bottom">NobleUI EmberJs</td>
                                         <td class="border-bottom">01/05/2022</td>
                                         <td class="border-bottom">10/11/2022</td>
-                                        <td class="border-bottom"><span class="badge bg-info">Pending</span>
-                                        </td>
+                                        <td class="border-bottom"><span class="badge bg-info">Pending</span></td>
                                         <td class="border-bottom">Jensen Combs</td>
                                     </tr>
                                 </tbody>
