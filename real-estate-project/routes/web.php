@@ -75,7 +75,7 @@ require __DIR__ . '/auth.php';
 
 
 //Admin Group Middleware
-Route::middleware(['auth', 'roles:admin'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
     Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
@@ -96,7 +96,7 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
 
 
 //Agent Group Middleware
-Route::middleware(['auth', 'roles:agent'])->group(function () {
+Route::middleware(['auth', 'role:agent'])->group(function () {
     Route::get('/agent/dashboard', [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
     Route::get('/agent/logout', [AgentController::class, 'AgentLogout'])->name('agent.logout');
     Route::get('/agent/profile', [AgentController::class, 'AgentProfile'])->name('agent.profile');
@@ -105,7 +105,7 @@ Route::middleware(['auth', 'roles:agent'])->group(function () {
     Route::post('/agent/update/password', [AgentController::class, 'AgentUpdatePassword'])->name('agent.update.password');
 });
 
-Route::middleware(['auth', 'roles:admin'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
 
 
     //Property type all route
@@ -279,7 +279,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
 
 //Agent Group Middleware
-Route::middleware(['auth', 'roles:agent'])->group(function () {
+Route::middleware(['auth', 'role:agent'])->group(function () {
 
     // Agent All Property
     Route::controller(AgentPropertyController::class)->group(function () {

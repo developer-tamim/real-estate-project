@@ -28,7 +28,7 @@
                                     <div class="author pull-left">
 
                                         @if ($item->agent_id == null)
-                                            <figure class="author-thumb"><img src="{{ url('upload/ariyan.jpg') }}"
+                                            <figure class="author-thumb"><img src="{{ url('upload/default_profile.jpg') }}"
                                                     alt=""></figure>
                                             <h6>Admin </h6>
                                         @else

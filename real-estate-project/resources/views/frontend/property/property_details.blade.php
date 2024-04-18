@@ -5,7 +5,6 @@
     {{ $property->property_name }} | Easy RealEstate
 @endsection
 
-
 <!--Page Title-->
 <section class="page-title-two bg-color-1 centred">
     <div class="pattern-layer">
@@ -81,10 +80,12 @@
                 <div class="property-details-content">
                     <div class="carousel-inner">
                         <div class="single-item-carousel owl-carousel owl-theme owl-dots-none">
+                            @if($multiImage != null)
                             @foreach ($multiImage as $img)
                                 <figure class="image-box"><img src="{{ asset($img->photo_name) }}" alt="">
                                 </figure>
                             @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="discription-box content-widget">
@@ -128,7 +129,8 @@
                         </div>
                         <ul class="info clearfix">
                             <li><span>Address:</span> {{ $property->address }}</li>
-                            <li><span>State/county:</span> {{ $property['pstate']['state_name'] }}</li>
+                            <li><span>State/county:</span> {{ $property->pstate?->state_name }}</li>
+                            {{-- <li><span>State/county:</span> {{ $property['pstate']['state_name'] }}</li> --}}
                             <li><span>Neighborhood:</span> {{ $property->neighborhood }}</li>
                             <li><span>Zip/Postal Code:</span> {{ $property->postal_code }}</li>
                             <li><span>City:</span> {{ $property->city }}</li>
@@ -250,19 +252,6 @@
                         <div class="author-box">
 
                             @if ($property->agent_id == null)
-                                <figure class="author-thumb"><img src="{{ url('upload/ariyan.jpg') }}"
-                                        alt=""></figure>
-                                <div class="inner">
-                                    <h4>Admin </h4>
-                                    <ul class="info clearfix">
-                                        <li><i class="fas fa-map-marker-alt"></i>84 St. John Wood High Street,
-                                            St Johns Wood</li>
-                                        <li><i class="fas fa-phone"></i><a href="tel:03030571965">030 3057 1965</a>
-                                        </li>
-                                    </ul>
-                                    <div class="btn-box"><a href="agents-details.html">View Listing</a></div>
-                                </div>
-                            @else
                                 <figure class="author-thumb"><img
                                         src="{{ !empty($property->user->photo) ? url('upload/agent_images/' . $property->user->photo) : url('upload/no_image.jpg') }}"
                                         alt=""></figure>
@@ -278,15 +267,15 @@
 
                                     <div id="app">
 
-                                        <send-message :recevierid="{{ $property->agent_id }}" receivername="{{ $property->user->name }}" >
+                                        <send-message :recevierid="{{ $property->agent_id }}"
+                                            receivername="{{ $property->user->name }}">
 
                                         </send-message>
 
                                     </div>
                                 @else
                                     <span class="text-danger">For Chat Login First </span>
-                                @endauth
-
+                                {{-- @endauth --}}
 
 
 
